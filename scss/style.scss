@@ -10,34 +10,43 @@ $main-border-radius-xl: 15px;
 $main-border-radius-l: 10px;
 $main-border-radius-s: 5px;
 
-body{
+body {
   display: grid;
   place-items: center;
   height: 100vh;
 }
 
-.todolist{
+.todolist {
   width: 100%;
   max-width: 480px;
   height: 700px;
   box-shadow: $main-shadow;
   border-radius: $main-border-radius-xl;
   padding: 16px;
+  overflow: scroll;
 }
 
-.todolist__controller{
+.todolist__controller {
   width: 100%;
+  max-width: 450px;
   height: 200px;
+  position: fixed;
+  z-index: 100000;
+  top: 110px;
   box-shadow: $main-shadow;
   border-radius: $main-border-radius-l;
   padding: 20px;
+  background-color: white;
 }
 
-form{
+button {
+  cursor: pointer;
+}
+form {
   display: flex;
   width: 100%;
   gap: 0 10px;
-  button{
+  button {
     background-color: $main-success-color;
     text-transform: capitalize;
     padding: 0 16px;
@@ -47,13 +56,13 @@ form{
     border: none;
     cursor: pointer;
     box-shadow: $main-shadow;
-    &:active{
+    &:active {
       transform: scale(1.1);
     }
   }
 }
 
-.todolist__input-wrapper{
+.todolist__input-wrapper {
   box-shadow: $main-shadow;
   height: 50px;
   flex: 1;
@@ -61,7 +70,7 @@ form{
   align-items: center;
   padding: 0 10px;
   border-radius: $main-border-radius-s;
-  input{
+  input {
     height: 100%;
     width: 100%;
     border: none;
@@ -69,13 +78,13 @@ form{
     font-size: 18px;
   }
 
-  i{
+  i {
     color: $main-danger-color;
     cursor: pointer;
   }
 }
 
-.todolist__deleteall{
+.todolist__deleteall {
   background-color: $main-danger-color;
   color: #fff;
   border: none;
@@ -85,29 +94,30 @@ form{
   margin-top: 50px;
 }
 
-.todolist__taskcontainer{
+.todolist__taskcontainer {
   display: flex;
   flex-direction: column;
   gap: 15px 0;
   padding: 20px 0;
   font-family: sans-serif;
+  margin-top: 200px;
 }
 
-.todolist__item{
+.todolist__item {
   box-shadow: $main-shadow;
   padding: 16px;
   border-radius: $main-border-radius-s;
-  strong  {
+  strong {
     font-size: 18px;
     font-weight: 600;
   }
 }
 
-.todolist__actions{
+.todolist__actions {
   margin-top: 15px;
 }
 
-.todolist-btn{
+.todolist-btn {
   width: 100px;
   padding: 14px 0;
   border: none;
@@ -116,23 +126,23 @@ form{
   position: relative;
 }
 
-.complete{
+.complete {
   background-color: $main-success-color;
 }
 
-.edit{
+.edit {
   background-color: $main-warning-color;
 }
 
-.time{
+.time {
   background-color: dodgerblue;
 }
 
-.delete{
+.delete {
   background-color: $main-danger-color;
 }
 
-.additonal__time{
+.additonal__time {
   position: absolute;
   background-color: $main-dark-color;
   color: #fff;
@@ -146,7 +156,16 @@ form{
   opacity: 0;
 }
 
-.time:hover > .additonal__time{
+.time:hover > .additonal__time {
   transform: scale(1);
   opacity: 1;
+}
+.strong {
+  text-decoration: none;
+  background-color: transparent;
+}
+.active {
+  text-decoration: line-through;
+  background-color: #14c414;
+  transition: all ease 0.5s;
 }
